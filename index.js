@@ -70,22 +70,81 @@
  var modeltbl =document.getElementById('modeltbl')
  var statustbl =document.getElementById('statustbl')
  var pricetbl =document.getElementById('pricetbl')
-var tbl =document.getElementById('tbl')
- 
- sellbtn.addEventListener('click',()=>{
+ var tbl =document.getElementById('tbl')
+ var child =document.getElementById('child')
+ var buble =document.getElementById('buble')
+
+ sellbtn.addEventListener('click',(event)=>{
      var newhtml
    alert(`you select ${nam.value} ${model.value} ${stat.value} ${price.value}`)   
-
-   var html ='<tr><td id="nametbl">%nametbl%</td><td id="modeltbl">%modeltbl%</td><td id="statustbl">%statustbl%</td><td id="pricetbl">%pricetbl%</td></tr></div>'
-   newhtml= html.replace('%nametbl%',nam.value)
-   newhtml= html.replace('%modeltbl%',model.value) 
-   newhtml= html.replace('%statustbl%',stat.value)
-   newhtml= html.replace('%pricetbl%',price.value)
   
-   tbl.insertAdjacentHTML('beforeend', newhtml);
+   var newhtml ='<tr id="child"><td id="nametbl">%nametbl%</td><td id="modeltbl">%modeltbl%</td><td id="statustbl">%statustbl%</td><td id="pricetbl">%pricetbl% <Button id="dele" value="del">Delete</Button></td></tr></div>'     
+   newhtml= newhtml.replace('%nametbl%',nam.value)
+   newhtml= newhtml.replace('%modeltbl%',model.value) 
+   newhtml= newhtml.replace('%pricetbl%',price.value) 
+   newhtml= newhtml.replace('%statustbl%',stat.value)
+  
+   tbl.insertAdjacentHTML('beforeend', newhtml)
+    nam.value =" "
+    price.value=" "
    console.log(newhtml)
-   console.log(typeof(newhtml))
+   console.log(event.target)
 })
+
+tbl.addEventListener('click',(event)=>{
+     
+   if(event.target.value=='del'){
+  
+      // tbl.parentNode.removeChild(event.target.parentNode.parentNode) mistake
+      
+      alert("clicking child")
+      let n=  tbl.removeChild(event.target.parentNode.parentNode.parentNode)
+    
+   }
+ 
+ },)
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
